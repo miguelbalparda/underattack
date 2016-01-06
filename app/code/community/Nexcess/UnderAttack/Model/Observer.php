@@ -6,32 +6,32 @@ class Nexcess_UnderAttack_Model_Observer extends Mage_Core_Model_Abstract
     
     public function areUaHuman()
     {
-    	$cookie = Mage::getModel('core/cookie');
-    	if ($cookie->get('underattack_allowed')) {
-    		return;
-    	} else {
-    		$this->checkIfHuman();
-    	}
+        $cookie = Mage::getModel('core/cookie');
+        if ($cookie->get('underattack_allowed')) {
+            return;
+        } else {
+            $this->checkIfHuman();
+        }
         die(a);
     }
 
     protected function checkIfHuman() {
 
-		$ip = Mage::getModel('underattack/ip');
-    	if(something_unusuall) {
-    		if ($ip->loadByAttribute('ip', Mage::helper('core/http')->getRemoteAddr())) {
-    			$ip->setAccessCount($ip->getAccessCount()+1);
-    			$ip->save();
-    		} else {
-    			$ip->setIp(Mage::helper('core/http')->getRemoteAddr());
-    			$ip->setAccessCount(1);
-    			$ip->save();
-    		}
-    		dosomethingwiththis();
-    	} else {
-    		$cookie->set('underattack_allowed',true, 60*60);
-    	}
-    	return;
+        $ip = Mage::getModel('underattack/ip');
+        if(something_unusuall) {
+            if ($ip->loadByAttribute('ip', Mage::helper('core/http')->getRemoteAddr())) {
+                $ip->setAccessCount($ip->getAccessCount()+1);
+                $ip->save();
+            } else {
+                $ip->setIp(Mage::helper('core/http')->getRemoteAddr());
+                $ip->setAccessCount(1);
+                $ip->save();
+            }
+            dosomethingwiththis();
+        } else {
+            $cookie->set('underattack_allowed',true, 60*60);
+        }
+        return;
     }
 
 
