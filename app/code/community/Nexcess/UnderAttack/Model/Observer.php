@@ -27,7 +27,8 @@ class Nexcess_UnderAttack_Model_Observer extends Mage_Core_Model_Abstract
                 $ip->setAccessCount(1);
                 $ip->save();
             }
-            dosomethingwiththis();
+            header('HTTP/1.0 403 Forbidden');
+    		die('You are not allowed to access this file.'); 
         } else {
             $cookie->set('underattack_allowed',true, 60*60);
         }
